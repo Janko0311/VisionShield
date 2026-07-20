@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionShield OS Dashboard</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        
+        <div class="sidebar">
+            <div>
+                <div class="logo">VisionShield OS</div>
+                <nav>                  
+                    
+                    <div class="nav-item active" id="btn-zh" onclick="setLang('zh')">繁體中文 (廣東話)</div>
+                    <div class="nav-item" id="btn-en" onclick="setLang('en')">English (US)</div>
+                    <div style="margin: 20px 0; border-top: 1px solid rgba(255,255,255,0.08);"></div>
+                    
+                    <div class="nav-item active" id="btn-norm" onclick="setMode('normal')" style="background: rgba(94,92,230,0.25);">大眾日常避險</div>
+                    <div class="nav-item" id="btn-fire" onclick="setMode('fire')">火災濃煙逃生</div>
+                </nav>
+            </div>
+            
+            
+            <div class="account-section">
+                <input type="checkbox" id="acc-menu" class="account-toggle">
+                <label for="acc-menu" class="account-button">
+                    <span>⚙️ 系統配置</span>
+                    <span class="arrow">▼</span>
+                </label>
+                <div class="account-dropdown">
+                    <div class="account-item" onclick="alert('邊緣節點: Pico W 固件 v2.0')">設備硬件資訊</div>
+                    <div class="account-item" onclick="window.speechSynthesis.cancel()">手動靜音重置</div>
+                    <div class="account-item logout" onclick="location.reload()">重啟 Dashboard</div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="main-content">
+            <div class="card">
+                <h2 id="txt-radar-title">實時邊緣探測地圖</h2>
+                <div class="progress-container">
+                    <div class="circle" id="radar-circle">
+                        <span id="lbl-angle">90°</span>
+                    </div>
+                </div>
+                <p class="subtle" id="txt-radar-desc">環形指針與硬件 Servo 轉動角度毫秒級同步。</p>
+            </div>
+
+            <div class="card">
+                <h2 id="txt-table-title">智能決策數據指標</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="th-metric">核心指標</th>
+                            <th id="th-val" style="text-align: right;">即時數據</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="lbl-t1">當前雷達方位</td>
+                            <td id="val-sector" style="text-align: right; color: #FFFFFF; font-weight: 600;">正前方</td>
+                        </tr>
+                        <tr>
+                            <td id="lbl-t2">障礙物實時距離</td>
+                            <td id="val-distance" style="text-align: right; color: #FFFFFF; font-weight: 600;">-- cm</td>
+                        </tr>
+                        <tr>
+                            <td id="lbl-t3">自主避險警告</td>
+                            <td id="val-alert" class="alert-active" style="text-align: right;">系統就緒</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="app.js"></script>
+</body>
+</html>
